@@ -22,13 +22,17 @@ jobs:
         cache: 'npm'
 
     - name: Install Dependencies for Livestream
-      run: npm ci --prefix live-stream
+      run: npm ci
+      working-directory: LiveNex-user-server/live-stream
 
     - name: Build Livestream
-      run: npm run build --prefix live-stream
+      run: npm run build
+      working-directory: LiveNex-user-server/live-stream
 
     - name: Install Dependencies for User
-      run: npm ci --prefix user
+      run: npm ci
+      working-directory: LiveNex-user-server/user
 
     - name: Build User
-      run: npm run build --prefix user
+      run: npm run build
+      working-directory: LiveNex-user-server/user
