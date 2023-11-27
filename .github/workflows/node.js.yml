@@ -22,10 +22,10 @@ jobs:
         cache: 'npm'
 
     - name: Install Dependencies for Livestream
-      run: npm ci --prefix livestream
+      run: npm ci --prefix live-stream
 
     - name: Build Livestream
-      run: npm run build --prefix livestream
+      run: npm run build --prefix live-stream
 
     - name: Install Dependencies for User
       run: npm ci --prefix user
