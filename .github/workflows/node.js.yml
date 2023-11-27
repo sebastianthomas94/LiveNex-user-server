@@ -13,7 +13,8 @@ jobs:
         node-version: [14.x, 16.x, 18.x]
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout Repository
+      uses: actions/checkout@v3
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
@@ -22,17 +23,21 @@ jobs:
         cache: 'npm'
 
     - name: Install Dependencies for Livestream
-      run: npm ci
-      working-directory: LiveNex-user-server/live-stream
+      run: |
+        cd LiveNex-user-server/live-stream
+        npm ci
 
     - name: Build Livestream
-      run: npm run build
-      working-directory: LiveNex-user-server/live-stream
+      run: |
+        cd LiveNex-user-server/live-stream
+        npm run build
 
     - name: Install Dependencies for User
-      run: npm ci
-      working-directory: LiveNex-user-server/user
+      run: |
+        cd LiveNex-user-server/user
+        npm ci
 
     - name: Build User
-      run: npm run build
-      working-directory: LiveNex-user-server/user
+      run: |
+        cd LiveNex-user-server/user
+        npm run build
