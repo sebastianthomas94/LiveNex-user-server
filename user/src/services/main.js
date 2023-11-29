@@ -145,7 +145,7 @@ const googleCallBack = (req, res) => {
           <script>
             window.opener.postMessage(${JSON.stringify(
               user
-            )}, 'http://localhost:3000');
+            )}, ${process.env.FRONT_END});
             window.close();
           </script>
         `);
@@ -269,7 +269,7 @@ const youtubeOauthCallback = async (req, res) => {
         <script>
           window.opener.postMessage(${JSON.stringify(
             json
-          )},'http://localhost:3000/');
+          )},${process.env.FRONT_END});
           window.close();
         </script>
       `);

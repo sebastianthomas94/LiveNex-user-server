@@ -61,7 +61,7 @@ const facebookOauthCallback = async (req, res) => {
     };
     res.send(`
   <script>
-    window.opener.postMessage(${JSON.stringify(rtmp)},'http://localhost:3000/');
+    window.opener.postMessage(${JSON.stringify(rtmp)},${process.env.FRONT_END});
     window.close();
   </script>
 `);
