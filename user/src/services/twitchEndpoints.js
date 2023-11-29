@@ -45,7 +45,7 @@ const twitchOauthCallback = async (req, res) => {
     <script>
       window.opener.postMessage(${JSON.stringify(
         rtmp
-      )},${process.env.FRONT_END});
+      )},"${process.env.FRONT_END}");
       window.close();
     </script>
   `);

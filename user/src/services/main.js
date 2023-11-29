@@ -143,9 +143,7 @@ const googleCallBack = (req, res) => {
           res.cookie("jwt", token);
           res.send(`
           <script>
-            window.opener.postMessage(${JSON.stringify(
-              user
-            )}, ${process.env.FRONT_END});
+            window.opener.postMessage(${JSON.stringify(user)}, "${process.env.FRONT_END}");
             window.close();
           </script>
         `);
@@ -269,7 +267,7 @@ const youtubeOauthCallback = async (req, res) => {
         <script>
           window.opener.postMessage(${JSON.stringify(
             json
-          )},${process.env.FRONT_END});
+          )},"${process.env.FRONT_END}");
           window.close();
         </script>
       `);
