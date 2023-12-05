@@ -24,12 +24,12 @@ jobs:
 
     - name: Install Dependencies for Livestream
       run: |
-        cd LiveNex-user-server/live-stream
+        cd live-stream/
         npm ci
 
 
     - name: Install Dependencies for User
       run: |
-        cd LiveNex-user-server/user
+        cd user/
         npm ci
 
