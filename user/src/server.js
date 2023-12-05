@@ -42,8 +42,8 @@ import {
 import multer from "multer";
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const dirname = path.resolve(path.dirname(""));
+// const __dirname = path.dirname(__filename);
+const __dirname = path.resolve(path.dirname(""));
 dotenv.config({ path: path.join(__dirname, "../.env") });
 
 const storage = multer.memoryStorage();
@@ -89,10 +89,7 @@ app.use(express.json());
 //   });
 // });
 
-app.use(express.static(path.join(dirname, "views/build")));
-app.get('*',(req,res)=>{
-  res.sendFile(path.join(__dirname,"views/build/index.html"))
-})
+app.use(express.static(path.resolve(__dirname, "./views/build")));
 
 app.post("/user/signin", signinService);
 app.post("/user/signup", signupService);
@@ -126,6 +123,10 @@ app.get("/user/getSubscriptionDetails", authAndSave, getSubscriptionDetails);
 app.post("/user/scheduleinfoupdate", authAndSave, scheduleInfoUpdate);
 app.get("/user/getUpcomingLives", authAndSave, getUpcomingLives);
 app.use("/user/uploadvideo", upload.single("file"), uploadtos3);
+
+app.get('*',(req,res)=>{
+  res.sendFile(path.resolve(__dirname, "./views/build/index.html"))
+})
 
 app.listen(process.env.PORT, () =>
   console.log(`User server started at ${process.env.PORT}`)
