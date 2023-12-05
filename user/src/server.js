@@ -43,6 +43,7 @@ import multer from "multer";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const dirname = path.resolve(path.dirname(""));
 dotenv.config({ path: path.join(__dirname, "../.env") });
 
 const storage = multer.memoryStorage();
@@ -65,7 +66,7 @@ app.use(
 );
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: process.env.FRONT_END,
     methods: "*",
     credentials: true,
   })
@@ -87,6 +88,11 @@ app.use(express.json());
 //     next();
 //   });
 // });
+
+app.use(express.static(path.join(dirname, "views/build")));
+app.get('*',(req,res)=>{
+  res.sendFile(path.join(__dirname,"views/build/index.html"))
+})
 
 app.post("/user/signin", signinService);
 app.post("/user/signup", signupService);
