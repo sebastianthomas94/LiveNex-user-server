@@ -81,9 +81,7 @@ io.on("connection", async (socket) => {
   const fileName = socket.handshake.query.fileName;
   const scheduledTime = socket.handshake.query.scheduledTime;
   const scheduling = socket.handshake.query.scheduling;
-  const videoFilePath =
-    "/home/sebastian/Desktop/Brototype/Week 23/LiveNex-rollback/LiveNex-server/api-gateway/public/videos/" +
-    fileName;
+
 
   let ffmpegInput, ffmpeg;
   let facebookCommand, twitchCommand, youtubeCommand;
