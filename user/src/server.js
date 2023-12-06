@@ -74,7 +74,13 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.json());
+const bodyParserOptions = {
+  limit: '30mb', // Set a higher limit for request body size
+};
+
+app.use(express.json(bodyParserOptions));
+app.use(express.urlencoded({ extended: true, ...bodyParserOptions }));
+
 
 // app.use((req, res, next) => {
 //   let data = '';
